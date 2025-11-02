@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Detail - MyShop</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    /* Custom styling for neat layout */
+    .product-image {
+      max-height: 450px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    .thumbnail {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+    .btn-custom {
+      min-width: 150px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  {% include "header.html" %}
+
+  <section class="py-5">
+    <div class="container">
+      <div class="row g-4">
+        <!-- Product Image -->
+        <div class="col-lg-6 d-flex justify-content-center align-items-start">
+          <div class="shadow-sm border rounded p-3 bg-white">
+            <img src="{{ product.image.url }}" class="img-fluid product-image" alt="{{ product.product_name }}">
+            <!-- Thumbnails -->
+            <div class="d-flex gap-2 mt-3 justify-content-center">
+              <img src="{{ product.image.url }}" class="thumbnail" alt="thumb1">
+              <img src="{{ product.image.url }}" class="thumbnail" alt="thumb2">
+              <img src="{{ product.image.url }}" class="thumbnail" alt="thumb3">
+            </div>
+          </div>
+        </div>
+
+        <!-- Product Info -->
+        <div class="col-lg-6">
+          <h2 class="fw-bold">{{ product.product_name }}</h2>
+          <div class="d-flex align-items-center mb-2">
+            <span class="text-warning me-2">★★★★★</span>
+            <small class="text-muted">(120 reviews)</small>
+          </div>
+          <h3 class="text-success mb-3">${{ product.price }}</h3>
+          <p class="text-muted">{{ product.detail|truncatewords:30 }}</p>
+
+          <!-- Options -->
+          <div class="mb-3">
+            <label class="form-label fw-bold">Size:</label>
+            <select class="form-select w-50">
+              <option>Small</option>
+              <option>Medium</option>
+              <option>Large</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label fw-bold">Quantity:</label>
+            <input type="number" value="1" min="1" class="form-control w-25">
+          </div>
+
+          <!-- Buttons -->
+          <div class="d-flex gap-3 mb-4">
+            <button class="btn btn-success btn-lg btn-custom shadow-sm">
+              <i class="fa fa-shopping-cart me-2"></i><a href="{% url "add_to_cart" product.id %}">Add to Cart</a> 
+            </button>
+            <button class="btn btn-outline-danger btn-lg btn-custom shadow-sm">
+              <i class="fa fa-heart me-2"></i> Wishlist
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tabs -->
+      <div class="row mt-5">
+        <div class="col-12">
+          <ul class="nav nav-tabs" id="productTab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active" id="desc-tab" data-bs-toggle="tab" data-bs-target="#desc" type="button">Description</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="reviews-tab" data-bs-toggle="tab" data-bs-target="#reviews" type="button">Reviews</button>
+            </li>
+          </ul>
+          <div class="tab-content border border-top-0 p-4 shadow-sm" id="productTabContent">
+            <div class="tab-pane fade show active" id="desc" role="tabpanel">
+              <h5>Product Details</h5>
+              <p>{{ product.detail }}</p>
+            </div>
+            <div class="tab-pane fade" id="reviews" role="tabpanel">
+              <h5>Customer Reviews</h5>
+              <div class="mb-3 border-bottom pb-2">
+                <strong>John Doe</strong>
+                <span class="text-warning">★★★★☆</span>
+                <p>Great product, totally worth the money!</p>
+              </div>
+              <div class="mb-3 border-bottom pb-2">
+                <strong>Jane Smith</strong>
+                <span class="text-warning">★★★★★</span>
+                <p>Amazing quality, fast delivery. Highly recommended!</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+ <section class="py-5">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-8 text-center">
+          <h3>Subscribe to our Newsletter</h3>
+          <p>Get updates on latest products and offers</p>
+          <div class="input-group mb-3">
+            <input type="email" class="form-control" placeholder="Enter your email">
+            <button class="btn btn-dark" type="button">Subscribe</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Footer -->
+  {% include "footer.html" %}
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

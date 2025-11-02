@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MyShop - Home</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    /* Compact passport-style category images */
+    .category-img {
+      width: 120px;
+      height: 140px;
+      object-fit: cover;
+      display: block;
+      margin: 0 auto 15px auto;
+      border-radius: 8px;
+    }
+    /* Featured Product Card */
+    .product-card img {
+      height: 180px;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero Section -->
+  <section class="py-5 bg-light">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <h1 class="display-4 fw-bold">Shop Smart. Live Better.</h1>
+          <p class="lead">Discover the best products at unbeatable prices.</p>
+          <a href="{% url 'product_page' %}" class="btn btn-success btn-lg">Shop Now</a>
+        </div>
+        <div class="col-md-6 text-center">
+          
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Categories -->
+  <section class="py-5">
+    <div class="container">
+      <h2 class="text-center mb-4">Featured Categories</h2>
+      <div class="row g-4 justify-content-center">
+
+        <!-- Electronics -->
+        <div class="col-md-4 col-sm-6">
+          <div class="card text-center shadow-sm h-100 py-3">
+            <img src="{{ electronics.image.url }}" class="category-img" alt="Electronics">
+            <div class="card-body">
+              <h5 class="card-title">Electronics</h5>
+             <a href="{% url "product_detail" home.id %}" class="btn btn-outline-primary btn-sm">Explore</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fashion -->
+        <div class="col-md-4 col-sm-6">
+          <div class="card text-center shadow-sm h-100 py-3">
+            <img src="{{ fashion.image.url }}" class="category-img" alt="Fashion">
+            <div class="card-body">
+              <h5 class="card-title">Fashion</h5>
+             <a href="{% url "product_detail" home.id %}" class="btn btn-outline-primary btn-sm">Explore</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Home & Living -->
+        <div class="col-md-4 col-sm-6">
+          <div class="card text-center shadow-sm h-100 py-3">
+            <img src="{{ home.image.url }}" class="category-img" alt="Home & Living">
+            <div class="card-body">
+              <h5 class="card-title">Home & Living</h5>
+              <a href="{% url "product_detail" home.id %}" class="btn btn-outline-primary btn-sm">Explore</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+ 
+
+  <!-- Newsletter -->
+  <section class="py-5">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-8 text-center">
+          <h3>Subscribe to our Newsletter</h3>
+          <p>Get updates on latest products and offers</p>
+          <div class="input-group mb-3">
+            <input type="email" class="form-control" placeholder="Enter your email">
+            <button class="btn btn-dark" type="button">Subscribe</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+{% endblock %}

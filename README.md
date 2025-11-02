@@ -108,6 +108,3 @@ Admin can:
 **Mehtab Khan**
 📧 [itmehtabkhan000@gmail.com)
 
----
-
-Would you like me to make it **slightly shorter** (portfolio-style) or keep this **detailed version** for GitHub?
